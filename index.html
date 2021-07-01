@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+</head>
+
+<body onload="add()">
+    <center>
+        <h1>Race - 1</h1>
+        <canvas id="master" width="800" height="600" style="border: 5px solid chocolate;"></canvas>
+        <h4>
+            <b class="text-danger">NOTE: </b> If cars is not visible, press any arrow key
+        </h4>
+    </center>
+</body>
+<script>
+    canvas = document.getElementById("master")
+    ctx = canvas.getContext("2d")
+
+    c1w = 120
+    c1h = 70
+    c1i = "download.png"
+    c1x = 10
+    c1y = 10
+
+
+    c2w = 120
+    c2h = 70
+    c2i = "images.png"
+    c2x = 10
+    c2y = 100
+
+    bgimg = "racing.jpg"
+
+    function add() {
+        bgimgt = new Image()
+        bgimgt.onload = ub
+        bgimgt.src = bgimg
+
+        c1t = new Image()
+        c1t.onload = uc1
+        c1t.src = c1i
+
+        c2t = new Image()
+        c2t.onload = uc2
+        c2t.src = c2i
+    }
+
+    function ub() {
+        ctx.drawImage(bgimgt, 0, 0, canvas.width, canvas.height)
+    }
+
+    function uc1() {
+        ctx.drawImage(c1t, c1x, c1y, c1w, c1h)
+    }
+
+    function uc2() {
+        ctx.drawImage(c2t, c2x, c2y, c2w, c2h)
+    }
+
+    window.addEventListener("keydown", my_keydown)
+
+    function my_keydown(e) {
+        kp = e.keyCode;
+        if (kp == '38') {
+            c1up()
+        }
+        if (kp == '40') {
+            c1down()
+        }
+        if (kp == '37') {
+            c1left()
+        }
+        if (kp == '39') {
+            c1right()
+        }
+        if (kp == '87') {
+            c2up()
+        }
+        if (kp == '83') {
+            c2down()
+        }
+        if (kp == '65') {
+            c2left()
+        }
+        if (kp == '68') {
+            c2right()
+        }
+    }
+
+    function c1up() {
+        if (c1y >= 0) {
+            c1y = c1y - 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c1down() {
+        if (c1y <= 500) {
+            c1y = c1y + 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c1left() {
+        if (c1x >= 0) {
+            c1x = c1x - 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c1right() {
+        if (c1x <= 670) {
+            c1x = c1x + 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+    function c2up() {
+        if (c2y >= 0) {
+            c2y = c2y - 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c2down() {
+        if (c2y <= 500) {
+            c2y = c2y + 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c2left() {
+        if (c2x >= 0) {
+            c2x = c2x - 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+
+    function c2right() {
+        if (c2x <= 670) {
+            c2x = c2x + 10
+            ub()
+            uc1()
+            uc2()
+        }
+    }
+</script>
+
+</html>
